@@ -7,12 +7,14 @@
 <script>
 export default {
   props: ['searchTerm'],
-  emits: ['search'],
-  methods: {
-    search(event) {
-      this.$emit('search', event.target.value);
-    },
-  },
+  setup(props, context) {
+    function search(event) {
+      context.emit('search', event.target.value)
+    }
+    return {
+      search
+    }
+  }
 };
 </script>
 
